@@ -77,6 +77,7 @@ int main(){
 	start = clock(); //Inicio
 	deleteList(mainList);
 	end = clock(); //Final
+	elapsedSeconds = (double)(end - start) / CLOCKS_PER_SEC;
 	printf("Tarda %lf segundos en eliminar la lista\n", elapsedSeconds);
 	return 0;
 }
