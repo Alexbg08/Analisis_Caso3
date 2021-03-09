@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
-#define CANT_ELEM 10000
+#define CANT_ELEM 100000000
 #define LIST_NUM 0
 #define SRCH_NUM 1
 
@@ -57,15 +58,26 @@ int linearSearch(List* pList, int pSearchNum){
 }
 
 int main(){
-	printf("Se utilizan %d bytes del heap\n", memUsage);
 	List* mainList = (List*)malloc(sizeof(List));
 	memUsage+=sizeof(List);
+	
+	clock_t start = clock(); //Inicio
 	makeList(mainList, CANT_ELEM); //Crea lista de CANT_ELEM ceros
-	//Ver tiempo
-	printf("%d" , linearSearch(mainList, SRCH_NUM)); //Busca un 1 en la lista
+	clock_t end = clock(); //Final
+	double elapsedSeconds = (double)(end - start) / CLOCKS_PER_SEC;
+	printf("Tarda %lf segundos en crear la lista de 0´s\n", elapsedSeconds);
+	
+	start = clock(); //Inicio
+	linearSearch(mainList, SRCH_NUM); //Busca un 1 en la lista
+	end = clock(); //Final
+	elapsedSeconds = (double)(end - start) / CLOCKS_PER_SEC;
 	printf("Se utilizan %d bytes del heap\n", memUsage);
-	//Comprobar tiempo
-	//Mostrar datos
+	printf("Tarda %lf segundos en recorrer toda la lista\n", elapsedSeconds);
+	
+	start = clock(); //Inicio
 	deleteList(mainList);
+	end = clock(); //Final
+	elapsedSeconds = (double)(end - start) / CLOCKS_PER_SEC;
+	printf("Tarda %lf segundos en eliminar la lista\n", elapsedSeconds);
 	return 0;
 }
