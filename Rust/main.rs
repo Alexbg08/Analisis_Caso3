@@ -1,3 +1,11 @@
+use std::time::{SystemTime};
+
+const CANT_ELEM  : i32 = 100000000;
+const LIST_NUM : i32 = 0;
+const SRCH_NUM : i32 = 1;
+
+
+//Funcion de buscar en la lista
 pub fn linear_search<T: PartialEq>(item: &T, arr: &[T]) -> i32 {
     let mut idx_pos = -1; // -1 indicates not found
 
@@ -9,13 +17,18 @@ pub fn linear_search<T: PartialEq>(item: &T, arr: &[T]) -> i32 {
     }
     idx_pos
 }
+
+//FUNCION MAIN
 fn main() {
-    let index = linear_search(&"Rust", &vec!["Python", "Php", "Java", "C", "C++", "Rust"]);
-    println!("Position: {}", index);
 
-    let index = linear_search(&25, &vec![25, 62, 29, 43, 77]);
-    println!("Position: {}", index);
+    let mut ys: [u64; 10000] = [0; 10000];
 
-    let index = linear_search(&855, &vec![25, 62, 29, 43, 77]);
-    println!("Position: {}", index);
+    let inicio = SystemTime::now();
+
+    let index = linear_search(&23, &ys); //Recorre toda la lista pero no encuentra nada
+    println!("Posicion: {}", index);   
+
+    let fin = SystemTime::now();
+    println!("Duracion: {:?}", fin.duration_since(inicio))
+ 
 }
