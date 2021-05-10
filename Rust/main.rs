@@ -6,6 +6,7 @@ const SRCH_NUM : i32 = 1;
 
 
 //Funcion de buscar en la lista en rush
+//ESTOY CAMBIANDO ALGO
 pub fn linear_search<T: PartialEq>(item: &T, arr: &[T]) -> i32 {
     let mut idx_pos = -1; // -1 indicates not found
 
