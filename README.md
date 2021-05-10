@@ -1,5 +1,5 @@
 # Analisis_Caso3
- Caso#3
+ Caso#3   
 
 Lista con 10000::
 
